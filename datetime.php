@@ -9,13 +9,13 @@ $pageTitle = 'Current Date & Time';
 require_once 'includes/header.php';
 ?>
 <section class="time-stage" aria-label="Current date and time">
-    <p class="time-overline">Current time</p>
+    <p class="time-overline">Current Time</p>
     <div class="time-readout"><?= e($currentTime) ?></div>
+    <p class="date-overline">Current Date</p>
     <div class="date-readout"><?= e($currentDate) ?></div>
     <div class="time-rule"></div>
     <div class="time-details">
-        <div><span>DAY</span><strong><?= e($currentDay) ?></strong></div>
+        <div><span>Current Day</span><strong><?= e($currentDay) ?></strong></div>
     </div>
-    <p class="refresh-note"><a href="datetime.php">Refresh</a></p>
 </section>
 <?php require_once 'includes/footer.php'; ?>

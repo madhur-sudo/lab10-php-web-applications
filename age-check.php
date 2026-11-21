@@ -38,7 +38,7 @@ require_once 'includes/header.php';
 ?>
 <div class="content-grid single-column">
     <section class="surface main-surface">
-        <h2 class="feature-title">Age verification</h2>
+        <h2 class="feature-title">Age Verification</h2>
         <p class="surface-copy">Enter your name and age.</p>
 
         <?php if ($errors): ?>
@@ -59,7 +59,7 @@ require_once 'includes/header.php';
         <?php if ($authorized === false): ?>
             <p class="access-result denied" role="status">Hello, <?= e($name) ?>, you are not authorized to visit the site.</p>
         <?php elseif ($authorized === true): ?>
-            <p class="access-result granted" role="status">Welcome to this site</p>
+            <p class="access-result granted" role="status">Welcome to this site.</p>
         <?php endif; ?>
     </section>
 </div>

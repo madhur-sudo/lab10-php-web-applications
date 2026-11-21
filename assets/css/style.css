@@ -362,7 +362,7 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     text-align:center;
     box-shadow:0 18px 44px rgba(0,0,0,.15)
 }
-.time-overline {
+.time-overline,.date-overline {
     display:flex;
     justify-content:center;
     align-items:center;
@@ -370,6 +370,9 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     font:9px var(--mono);
     letter-spacing:.12em;
     color:#83a2aa
+}
+.date-overline {
+    margin:26px 0 5px
 }
 .time-readout {
     font:500 clamp(45px,9vw,91px)/1.15 var(--display);

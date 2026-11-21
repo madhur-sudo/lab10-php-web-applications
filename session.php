@@ -34,7 +34,7 @@ require_once 'includes/header.php';
         <?php if ($active): ?>
             <h2 class="feature-title">Hello, <span class="accent-text"><?= e($_SESSION['username']) ?></span>!</h2>
             <form method="post" action="logout.php" class="logout-form">
-                <button class="button button-outline" type="submit">End session</button>
+                <button class="button button-outline" type="submit">Logout</button>
             </form>
         <?php else: ?>
             <h2 class="feature-title">Start Session</h2>
@@ -43,7 +43,7 @@ require_once 'includes/header.php';
             <form method="post" action="session.php" class="form-stack">
                 <label for="username">Your name</label>
                 <input id="username" name="username" type="text" maxlength="80" autocomplete="name" placeholder="Enter your name" value="<?= e($nameInput) ?>" class="<?= $error !== '' ? 'has-error' : '' ?>" aria-invalid="<?= $error !== '' ? 'true' : 'false' ?>" <?= $error !== '' ? 'aria-describedby="name-error"' : '' ?> required>
-                <button class="button button-primary" type="submit">Begin session</button>
+                <button class="button button-primary" type="submit">Start Session</button>
             </form>
         <?php endif; ?>
     </section>
