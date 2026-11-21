@@ -30,15 +30,18 @@ $pageTitle = 'Session';
 require_once 'includes/header.php';
 ?>
 <div class="content-grid single-column">
-    <section class="surface main-surface">
+    <section class="surface main-surface application-panel">
         <?php if ($active): ?>
+            <div class="welcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/></svg></div>
             <h2 class="feature-title">Hello, <span class="accent-text"><?= e($_SESSION['username']) ?></span>!</h2>
+            <p class="surface-copy">Your session is active.</p>
             <form method="post" action="logout.php" class="logout-form">
                 <button class="button button-outline" type="submit">Logout</button>
             </form>
         <?php else: ?>
+            <div class="welcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
             <h2 class="feature-title">Start Session</h2>
-            <p class="surface-copy">Enter your name to begin.</p>
+            <p class="surface-copy">Enter your name to get started.</p>
             <?php if ($error !== ''): ?><p class="form-error" id="name-error" role="alert"><?= e($error) ?></p><?php endif; ?>
             <form method="post" action="session.php" class="form-stack">
                 <label for="username">Your name</label>

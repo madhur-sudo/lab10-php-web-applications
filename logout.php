@@ -32,6 +32,7 @@ $pageTitle = 'Thank You';
 require_once 'includes/header.php';
 ?>
 <section class="surface goodbye-surface">
+    <div class="goodbye-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div>
     <h2>Thank You, <span class="accent-text"><?= e($username) ?></span>.</h2>
     <p class="surface-copy">Your session lasted <strong><?= e($durationText) ?></strong>.</p>
     <div class="detail-strip centered">

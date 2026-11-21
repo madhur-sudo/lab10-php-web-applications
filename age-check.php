@@ -37,7 +37,7 @@ $pageTitle = 'Age Verification';
 require_once 'includes/header.php';
 ?>
 <div class="content-grid single-column">
-    <section class="surface main-surface">
+    <section class="surface main-surface application-panel">
         <h2 class="feature-title">Age Verification</h2>
         <p class="surface-copy">Enter your name and age.</p>
 
