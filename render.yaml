@@ -8,6 +8,7 @@ services:
     name: lab10-php-web-applications
     runtime: docker
     plan: free
+    branch: main
     dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT

@@ -49,10 +49,10 @@ The repository contains a Render Blueprint in `render.yaml`:
 
 1. Push the `main` branch to GitHub.
 2. In Render, choose **New → Blueprint** and connect this repository.
-3. Review the web service settings from `render.yaml` and create or update the service.
+3. For an existing service, sync the Blueprint or update that service's deploy branch to `main`; do not create a duplicate.
 4. Once deployed, open the service URL and check `/health.php` for a JSON health response.
 
-The Blueprint uses the Docker runtime and the root `Dockerfile`. Render supplies `PORT` (set to `10000` by this Blueprint); the container listens on that port. No application secrets or additional environment variables are required.
+The Blueprint uses the Docker runtime, tracks `main`, and builds from the root `Dockerfile`. Render supplies `PORT` (set to `10000` by this Blueprint); the container listens on that port. No application secrets or additional environment variables are required.
 
 ## Project structure
 
