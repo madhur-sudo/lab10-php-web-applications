@@ -1,77 +1,41 @@
-# Lab 10 — PHP Web Applications
+# Everyday
 
-**BTech CSE · Web Programming**
+A simple, responsive website with three useful features:
 
-A responsive PHP workspace for three server-side programming exercises: sessions, date and time, and age-based access control. The app uses core PHP, semantic HTML, and custom CSS without a database, framework, or external runtime dependency. A small legacy vanilla JavaScript helper remains under `assets/js/`.
+- **Session greeting** — enter your name, see when your session began, and end it when you're done.
+- **Date & time** — view today's date, weekday, and current time.
+- **Age access** — check eligibility; visitors aged 18 or older qualify.
 
-## Applications
-
-| Application | Files | Concepts |
-| --- | --- | --- |
-| Overview | `index.php` | Application navigation |
-| Session greeting | `session.php`, `logout.php` | Form validation, PHP sessions, session ID rotation, logout and duration |
-| Date and time | `datetime.php` | Server time, PHP `date()`, `Asia/Kolkata` timezone |
-| Age access check | `age-check.php` | Server-side validation; ages 0–130, with access granted at 18 or above |
-
-User-provided values are validated and escaped before they are rendered. The shared bootstrap configures the timezone, session cookie, and HTML escaping helper.
-
-## Technologies
-
-- PHP 8.2+ with the standard sessions extension
-- Apache HTTP Server (Docker deployment)
-- HTML5 and CSS3; a legacy vanilla JavaScript helper is kept under `assets/js/`
-- Docker and Render Blueprint configuration
+The age form accepts whole-number ages from 0 to 130. No account or additional setup is needed to use the site.
 
 ## Run locally
 
-Install PHP 8.2 or later, open a terminal in the repository root, and run:
+Install PHP 8.2 or later, open a terminal in this folder, and start the local server:
 
 ```sh
 php -S 127.0.0.1:8000
 ```
 
-Visit <http://127.0.0.1:8000>. The application uses the `Asia/Kolkata` timezone.
+Open <http://127.0.0.1:8000>. Dates and times use the `Asia/Kolkata` timezone.
 
 ## Run with Docker
 
-Build the image and start the container:
+Build and start the web server:
 
 ```sh
-docker build -t lab10-php .
-docker run --rm -p 8000:8080 -e PORT=8080 lab10-php
+docker build -t everyday .
+docker run --rm -p 8000:8080 -e PORT=8080 everyday
 ```
 
-Visit <http://localhost:8000>. The image is based on the official `php:8.2-apache` image. The entrypoint configures Apache to listen on `PORT`, defaulting to `8080` locally.
+Open <http://localhost:8000>.
 
-## Deploy on Render
+## Host on Render
 
-The repository contains a Render Blueprint in `render.yaml`:
+The repository includes a Render Blueprint in `render.yaml`.
 
 1. Push the `main` branch to GitHub.
 2. In Render, choose **New → Blueprint** and connect this repository.
-3. For an existing service, sync the Blueprint or update that service's deploy branch to `main`; do not create a duplicate.
-4. Once deployed, open the service URL and check `/health.php` for a JSON health response.
+3. For an existing service, sync the Blueprint or set the service's deploy branch to `main` rather than creating a duplicate.
+4. Open the service URL after deployment. Visit `/health.php` to check the service status.
 
-The Blueprint uses the Docker runtime, tracks `main`, and builds from the root `Dockerfile`. Render supplies `PORT` (set to `10000` by this Blueprint); the container listens on that port. No application secrets or additional environment variables are required.
-
-## Project structure
-
-```text
-.
-├── index.php
-├── session.php
-├── logout.php
-├── datetime.php
-├── age-check.php
-├── health.php
-├── includes/
-│   ├── bootstrap.php
-│   ├── header.php
-│   └── footer.php
-├── assets/
-│   ├── css/style.css
-│   └── js/script.js
-├── docker/entrypoint.sh
-├── Dockerfile
-└── render.yaml
-```
+The Blueprint tracks `main`, builds with the root `Dockerfile`, and listens on Render's `PORT` value. No application secrets are required.

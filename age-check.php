@@ -27,27 +27,42 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         $authorized = (int) $age >= 18;
     }
 }
-$pageTitle = 'Age-based access';
-$pageDesc = 'A small server-side check against an age threshold of 18.';
+$pageTitle = 'Age access';
 require_once 'includes/header.php';
 ?>
 <div class="content-grid age-grid">
-<section class="surface main-surface">
-    <span class="status-label">APPLICATION 03 <span class="status-divider">/</span> ACCESS CHECK</span>
-    <h2 class="feature-title">A clear answer,<br><span class="accent-text">after a check.</span></h2>
-    <p class="surface-copy">Enter a name and age. PHP validates both fields before deciding whether access is allowed.</p>
-    <?php if ($errors): ?><div class="form-error" role="alert"><strong>Check the highlighted details.</strong><ul><?php foreach ($errors as $error): ?><li><?= e($error) ?></li><?php endforeach; ?></ul></div><?php endif; ?>
-    <form method="post" action="age-check.php" class="form-stack">
-        <label for="name">Your name</label><input id="name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="e.g. Sam Rivera" value="<?= e($name) ?>" required>
-        <label for="age">Your age</label><input id="age" name="age" type="number" min="0" max="130" step="1" inputmode="numeric" placeholder="e.g. 21" value="<?= e($age) ?>" required>
-        <button class="button button-primary" type="submit">Check access <span aria-hidden="true">→</span></button>
-    </form>
-</section>
-<aside class="side-note result-note">
-    <?php if ($authorized === true): ?><span class="result-icon granted">✓</span><span class="status-label">ACCESS GRANTED</span><h3>Welcome to this site, <span class="accent-text"><?= e($name) ?></span>!</h3><p>At <?= e($age) ?>, this visitor meets the site's minimum age of 18.</p>
-    <?php elseif ($authorized === false): ?><span class="result-icon denied">↗</span><span class="status-label">ACCESS NOT GRANTED</span><h3>Hello <?= e($name) ?>, you are not authorized to visit the site.</h3><p>Access requires an age of 18 or above.</p>
-    <?php else: ?><span class="note-number">03</span><h3>One threshold.</h3><p>Under 18 is not authorized. At 18 and above, the visitor is welcomed.</p><?php endif; ?>
-    <div class="note-rule"></div><span class="note-foot">SERVER-SIDE VALIDATION</span>
-</aside>
+    <section class="surface main-surface">
+        <h2 class="feature-title">Check eligibility</h2>
+        <p class="surface-copy">Enter your name and age to see whether you are eligible.</p>
+        <?php if ($errors): ?>
+            <div class="form-error" id="age-errors" role="alert">
+                <strong>Please check your details.</strong>
+                <ul><?php foreach ($errors as $error): ?><li><?= e($error) ?></li><?php endforeach; ?></ul>
+            </div>
+        <?php endif; ?>
+        <form method="post" action="age-check.php" class="form-stack">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Enter your name" value="<?= e($name) ?>" class="<?= isset($errors['name']) ? 'has-error' : '' ?>" aria-invalid="<?= isset($errors['name']) ? 'true' : 'false' ?>" <?= isset($errors['name']) ? 'aria-describedby="age-errors"' : '' ?> required>
+            <label for="age">Your age</label>
+            <input id="age" name="age" type="number" min="0" max="130" step="1" inputmode="numeric" placeholder="Enter your age" value="<?= e($age) ?>" class="<?= isset($errors['age']) ? 'has-error' : '' ?>" aria-invalid="<?= isset($errors['age']) ? 'true' : 'false' ?>" <?= isset($errors['age']) ? 'aria-describedby="age-errors"' : '' ?> required>
+            <button class="button button-primary" type="submit">Check eligibility</button>
+        </form>
+    </section>
+    <aside class="side-note result-note" aria-live="polite">
+        <?php if ($authorized === true): ?>
+            <span class="result-icon granted" aria-hidden="true">✓</span>
+            <span class="status-label">ELIGIBLE</span>
+            <h3>You're eligible, <span class="accent-text"><?= e($name) ?></span>.</h3>
+            <p>The minimum age is 18.</p>
+        <?php elseif ($authorized === false): ?>
+            <span class="result-icon denied" aria-hidden="true">×</span>
+            <span class="status-label">NOT ELIGIBLE</span>
+            <h3>You're not eligible yet, <?= e($name) ?>.</h3>
+            <p>The minimum age is 18.</p>
+        <?php else: ?>
+            <h3>Age access</h3>
+            <p>Eligibility begins at age 18.</p>
+        <?php endif; ?>
+    </aside>
 </div>
 <?php require_once 'includes/footer.php'; ?>
