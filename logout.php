@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/bootstrap.php';
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['username'], $_SESSION['start_time'])) {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST'
+    || !isset($_SESSION['username'], $_SESSION['start_time'])
+    || !is_string($_SESSION['username'])
+    || !is_int($_SESSION['start_time'])) {
     redirect('session.php');
 }
 $username = (string) $_SESSION['username'];

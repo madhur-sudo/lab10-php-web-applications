@@ -13,6 +13,16 @@ date_default_timezone_set('Asia/Kolkata');
 // 2. Session
 // -----------------------------------------------------------------
 if (session_status() === PHP_SESSION_NONE) {
+    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+
+    session_set_cookie_params([
+        'httponly' => true,
+        'secure' => $isHttps,
+        'samesite' => 'Lax',
+        'path' => '/',
+    ]);
+    ini_set('session.use_strict_mode', '1');
     session_start();
 }
 

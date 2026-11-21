@@ -5,16 +5,22 @@ $age = '';
 $errors = [];
 $authorized = null;
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
-    $name = trim((string) ($_POST['name'] ?? ''));
-    $age = trim((string) ($_POST['age'] ?? ''));
+    $submittedName = $_POST['name'] ?? '';
+    $submittedAge = $_POST['age'] ?? '';
+    $name = is_string($submittedName) ? trim($submittedName) : '';
+    $age = is_string($submittedAge) ? trim($submittedAge) : '';
     if ($name === '') {
         $errors['name'] = 'Enter your name to continue.';
-    } elseif (strlen($name) > 320) {
+    } elseif (preg_match('//u', $name) !== 1) {
+        $errors['name'] = 'Enter a name using valid text.';
+    } elseif (preg_match_all('/./us', $name) > 80) {
         $errors['name'] = 'Please keep your name under 80 characters.';
     }
     if ($age === '') {
         $errors['age'] = 'Enter your age to continue.';
-    } elseif (!ctype_digit($age) || (int) $age > 130) {
+    } elseif (!ctype_digit($age)) {
+        $errors['age'] = 'Enter a whole number between 0 and 130.';
+    } elseif (strlen(ltrim($age, '0')) > 3 || (int) ltrim($age, '0') > 130) {
         $errors['age'] = 'Enter a whole number between 0 and 130.';
     }
     if (!$errors) {

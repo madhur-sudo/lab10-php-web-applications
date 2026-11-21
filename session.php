@@ -3,10 +3,13 @@ require_once 'includes/bootstrap.php';
 $error = '';
 $nameInput = '';
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
-    $nameInput = trim((string) ($_POST['username'] ?? ''));
+    $submittedName = $_POST['username'] ?? '';
+    $nameInput = is_string($submittedName) ? trim($submittedName) : '';
     if ($nameInput === '') {
         $error = 'Please enter your name to start a session.';
-    } elseif (strlen($nameInput) > 320) {
+    } elseif (preg_match('//u', $nameInput) !== 1) {
+        $error = 'Please enter a name using valid text.';
+    } elseif (preg_match_all('/./us', $nameInput) > 80) {
         $error = 'Please keep your name under 80 characters.';
     } else {
         session_regenerate_id(true);
@@ -15,7 +18,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         redirect('session.php');
     }
 }
-$active = isset($_SESSION['username'], $_SESSION['start_time']);
+$active = isset($_SESSION['username'], $_SESSION['start_time'])
+    && is_string($_SESSION['username'])
+    && $_SESSION['username'] !== ''
+    && is_int($_SESSION['start_time']);
 $pageTitle = 'Session greeting';
 $pageDesc = 'A short visit, remembered with a PHP session.';
 require_once 'includes/header.php';
