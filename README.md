@@ -1,6 +1,6 @@
 # Lab 10 — PHP Web Applications
 
-**BTech CSE · Web Programming**
+**Web Programming**
 
 A responsive PHP workspace for three server-side programming exercises: sessions, date and time, and age-based access control. The app uses core PHP, semantic HTML, and custom CSS without a database, framework, or external runtime dependency. A small legacy vanilla JavaScript helper remains under `assets/js/`.
 
