@@ -6,7 +6,7 @@ A simple, responsive website with three useful features:
 - **Date & time** — view today's date, weekday, and current time.
 - **Age access** — check eligibility; visitors aged 18 or older qualify.
 
-The age form accepts whole-number ages from 0 to 130. No account or additional setup is needed to use the site.
+The age form accepts non-negative whole-number ages. No account or additional setup is needed to use the site.
 
 ## Run locally
 

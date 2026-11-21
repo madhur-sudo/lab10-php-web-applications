@@ -5,7 +5,7 @@ $now = time();
 $currentDate = date('d F Y', $now);
 $currentTime = date('h:i:s A', $now);
 $currentDay = date('l', $now);
-$pageTitle = 'Date & time';
+$pageTitle = 'Current Date & Time';
 require_once 'includes/header.php';
 ?>
 <section class="time-stage" aria-label="Current date and time">

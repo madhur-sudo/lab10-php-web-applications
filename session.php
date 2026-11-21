@@ -32,13 +32,12 @@ require_once 'includes/header.php';
 <div class="content-grid single-column">
     <section class="surface main-surface">
         <?php if ($active): ?>
-            <h2 class="feature-title">Hello, <span class="accent-text"><?= e($_SESSION['username']) ?></span>.</h2>
-            <p class="surface-copy">Your session began <?= e(date('d F Y, h:i A', $_SESSION['start_time'])) ?>.</p>
+            <h2 class="feature-title">Hello, <span class="accent-text"><?= e($_SESSION['username']) ?></span>!</h2>
             <form method="post" action="logout.php" class="logout-form">
                 <button class="button button-outline" type="submit">End session</button>
             </form>
         <?php else: ?>
-            <h2 class="feature-title">Session greeting</h2>
+            <h2 class="feature-title">Start Session</h2>
             <p class="surface-copy">Enter your name to begin.</p>
             <?php if ($error !== ''): ?><p class="form-error" id="name-error" role="alert"><?= e($error) ?></p><?php endif; ?>
             <form method="post" action="session.php" class="form-stack">

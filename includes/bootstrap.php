@@ -1,6 +1,6 @@
 <?php
 /**
- * bootstrap.php — Global bootstrap for LAB 10 PHP Workspace
+ * bootstrap.php — Shared setup and helpers
  * Loaded on every page; sets up sessions, timezone and helpers.
  */
 

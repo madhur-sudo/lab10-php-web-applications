@@ -28,11 +28,11 @@ if (ini_get('session.use_cookies')) {
 }
 session_destroy();
 
-$pageTitle = 'Session ended';
+$pageTitle = 'Thank You';
 require_once 'includes/header.php';
 ?>
 <section class="surface goodbye-surface">
-    <h2>Thank you, <span class="accent-text"><?= e($username) ?></span>.</h2>
+    <h2>Thank You, <span class="accent-text"><?= e($username) ?></span>.</h2>
     <p class="surface-copy">Your session lasted <strong><?= e($durationText) ?></strong>.</p>
     <div class="detail-strip centered">
         <div><span>STARTED</span><strong><?= e(date('d M Y, h:i A', $start)) ?></strong></div>

@@ -99,7 +99,7 @@ a:focus-visible,button:focus-visible,input:focus-visible {
 .page-heading {
     display:flex;
     justify-content:space-between;
-    align-items:flex-end;
+    align-items:center;
     gap:24px;
     margin-bottom:43px
 }
@@ -108,46 +108,24 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     letter-spacing:-.045em;
     margin:0
 }
-.intro-banner {
-    min-height:210px;
-    padding:38px clamp(24px,5vw,48px);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(115deg,#0d293a 0%,#0a2535 55%,#0c333c 100%);
-    border:1px solid var(--border);
-    border-radius:24px;
-    box-shadow:0 20px 60px rgba(0,0,0,.18)
+.session-start {
+    display:grid;
+    gap:3px;
+    margin-left:auto;
+    padding:10px 14px;
+    border:1px solid rgba(98,221,196,.18);
+    border-radius:11px;
+    background:rgba(98,221,196,.06);
+    text-align:right
 }
-.intro-copy {
-    max-width:720px;
-    position:relative;
-    z-index:1
+.session-start span {
+    color:var(--muted);
+    font:9px var(--mono);
+    letter-spacing:.08em
 }
-.intro-copy h2 {
-    font:600 clamp(36px,5vw,54px)/1.09 var(--display);
-    letter-spacing:-.055em;
-    margin:0
-}
-.intro-copy>p:last-child {
-    font-size:14px;
-    color:#a7bbc2;
-    max-width:440px;
-    line-height:1.75;
-    margin:17px 0 0
-}
-.section-heading {
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    margin:32px 0 16px
-}
-.section-heading h2 {
-    font:600 22px var(--display);
-    letter-spacing:-.04em;
-    margin:0
+.session-start strong {
+    color:var(--text);
+    font:500 12px var(--sans)
 }
 .app-grid {
     display:grid;
@@ -156,9 +134,11 @@ a:focus-visible,button:focus-visible,input:focus-visible {
 }
 .app-card {
     display:flex;
-    flex-direction:column;
-    min-height:230px;
-    padding:22px 23px 19px;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    min-height:132px;
+    padding:22px 24px;
     background:linear-gradient(145deg,rgba(15,42,59,.94),rgba(10,31,46,.96));
     border:1px solid var(--border);
     border-radius:18px;
@@ -169,15 +149,10 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     border-color:rgba(98,221,196,.42);
     box-shadow:0 18px 35px rgba(0,0,0,.2)
 }
-.card-top,.card-bottom {
-    display:flex;
-    justify-content:space-between;
-    align-items:center
-}
-.app-number {
-    font:9px var(--mono);
-    letter-spacing:.12em;
-    color:#76909c
+.app-card h2 {
+    margin:0;
+    font:600 19px var(--display);
+    letter-spacing:-.025em
 }
 .card-arrow {
     color:#68828e;
@@ -186,53 +161,6 @@ a:focus-visible,button:focus-visible,input:focus-visible {
 .app-card:hover .card-arrow {
     color:var(--teal);
     transform:translate(2px,-2px)
-}
-.app-symbol {
-    width:42px;
-    height:42px;
-    margin:22px 0 14px;
-    display:grid;
-    place-items:center;
-    border-radius:13px;
-    font-size:20px
-}
-.symbol-user {
-    color:#72dfcc;
-    background:rgba(98,221,196,.1)
-}
-.symbol-clock {
-    color:#8fccc9;
-    background:rgba(98,221,196,.07)
-}
-.symbol-check {
-    color:#ade8d8;
-    background:rgba(98,221,196,.1)
-}
-.app-card h3 {
-    font:600 18px var(--display);
-    letter-spacing:-.025em;
-    margin:0 0 8px
-}
-.app-card>p {
-    font-size:12px;
-    line-height:1.75;
-    color:var(--muted);
-    margin:0 0 20px
-}
-.card-bottom {
-    margin-top:auto;
-    padding-top:15px;
-    border-top:1px solid rgba(182,218,224,.09);
-    font-size:10px;
-    color:#76909c
-}
-.card-bottom span:last-child {
-    color:#c2d3d6
-}
-.card-bottom b {
-    color:var(--teal);
-    font-size:14px;
-    margin-left:4px
 }
 .content-grid {
     display:grid;
@@ -252,14 +180,6 @@ a:focus-visible,button:focus-visible,input:focus-visible {
 }
 .main-surface {
     padding:clamp(28px,5vw,52px)
-}
-.status-label {
-    font:9px var(--mono);
-    letter-spacing:.14em;
-    color:var(--teal);
-    display:flex;
-    align-items:center;
-    gap:9px
 }
 .feature-title {
     font:600 clamp(31px,4vw,44px)/1.15 var(--display);
@@ -360,27 +280,24 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     padding-left:18px;
     margin:5px 0 0
 }
-.side-note {
-    position:relative;
-    overflow:hidden;
-    padding:30px 26px;
-    background:linear-gradient(160deg,rgba(14,46,57,.86),rgba(9,31,45,.7));
-    border:1px solid rgba(98,221,196,.13);
-    border-radius:var(--radius);
-    display:flex;
-    flex-direction:column;
-    justify-content:center
+.access-result {
+    max-width:430px;
+    margin:22px 0 0;
+    padding:14px 16px;
+    border:1px solid transparent;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600
 }
-.side-note h3 {
-    font:600 19px/1.4 var(--display);
-    letter-spacing:-.03em;
-    margin:20px 0 8px
+.access-result.granted {
+    color:var(--teal);
+    border-color:rgba(98,221,196,.25);
+    background:rgba(98,221,196,.07)
 }
-.side-note p {
-    font-size:12px;
-    line-height:1.8;
-    color:var(--muted);
-    margin:0
+.access-result.denied {
+    color:var(--red);
+    border-color:rgba(255,156,156,.25);
+    background:rgba(255,156,156,.06)
 }
 .detail-strip {
     display:flex;
@@ -425,18 +342,6 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     margin:0 auto;
     padding:48px 36px
 }
-.success-mark {
-    margin:auto auto 17px;
-    width:45px;
-    height:45px;
-    display:grid;
-    place-items:center;
-    border:1px solid rgba(98,221,196,.35);
-    background:rgba(98,221,196,.08);
-    color:var(--teal);
-    border-radius:50%;
-    font-size:21px
-}
 .goodbye-surface h2 {
     font:600 clamp(27px,4vw,38px) var(--display);
     letter-spacing:-.05em;
@@ -465,11 +370,6 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     font:9px var(--mono);
     letter-spacing:.12em;
     color:#83a2aa
-}
-.time-zone {
-    border-left:1px solid var(--border);
-    padding-left:10px;
-    color:var(--teal)
 }
 .time-readout {
     font:500 clamp(45px,9vw,91px)/1.15 var(--display);
@@ -521,34 +421,6 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     color:var(--teal);
     margin-left:5px
 }
-.age-grid .side-note {
-    min-height:100%
-}
-.result-icon {
-    width:42px;
-    height:42px;
-    display:grid;
-    place-items:center;
-    border-radius:50%;
-    font-size:19px;
-    margin-bottom:20px
-}
-.result-icon.granted {
-    color:var(--teal);
-    background:rgba(98,221,196,.1);
-    border:1px solid rgba(98,221,196,.22)
-}
-.result-icon.denied {
-    color:var(--red);
-    background:rgba(255,156,156,.08);
-    border:1px solid rgba(255,156,156,.22)
-}
-.result-note:has(.denied) .status-label {
-    color:var(--red)
-}
-.result-note:has(.granted) h3,.result-note:has(.denied) h3 {
-    font-size:17px
-}
 @media(max-width:800px) {
     .site-header {
     height:auto;
@@ -571,29 +443,22 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     width:calc(100% - 40px);
     padding:45px 0 58px
 }
-.intro-banner {
-    padding:35px 34px;
-    min-height:180px
-}
 .app-grid {
     grid-template-columns:1fr
 }
 .app-card {
-    min-height:235px
+    min-height:132px
 }
 .content-grid {
     grid-template-columns:1fr
 }
-.side-note {
-    min-height:210px
-}
-.age-grid .side-note {
-    min-height:230px
-}
 .page-heading {
-    align-items:flex-start;
-    flex-direction:column;
+    align-items:center;
+    flex-direction:row;
     margin-bottom:30px
+}
+.session-start {
+    align-self:center
 }
 }
 
@@ -613,29 +478,9 @@ a:focus-visible,button:focus-visible,input:focus-visible {
     width:calc(100% - 32px);
     padding:35px 0 45px
 }
-.intro-banner {
-    padding:30px 24px;
-    min-height:170px
-}
-.intro-copy h2 {
-    font-size:39px
-}
-.intro-copy>p:last-child {
-    font-size:12px;
-    max-width:320px
-}
-.section-heading {
-    align-items:flex-start;
-    flex-direction:column;
-    gap:6px;
-    margin-top:39px
-}
-.section-heading h2 {
-    font-size:19px
-}
 .app-card {
     padding:19px;
-    min-height:225px
+    min-height:112px
 }
 .main-surface {
     padding:28px 22px

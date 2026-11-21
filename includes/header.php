@@ -1,11 +1,15 @@
 <?php
 $pageTitle = $pageTitle ?? 'Home';
 $currentPage = current_page();
+$hasSession = isset($_SESSION['username'], $_SESSION['start_time'])
+    && is_string($_SESSION['username'])
+    && $_SESSION['username'] !== ''
+    && is_int($_SESSION['start_time']);
 $navItems = [
     'index.php' => 'Home',
     'session.php' => 'Session',
-    'datetime.php' => 'Date & time',
-    'age-check.php' => 'Age access',
+    'datetime.php' => 'Date & Time',
+    'age-check.php' => 'Age Access',
 ];
 ?>
 <!doctype html>
@@ -29,4 +33,10 @@ $navItems = [
 <main class="container">
     <div class="page-heading">
         <h1><?= e($pageTitle) ?></h1>
+        <?php if ($currentPage === 'session.php' && $hasSession): ?>
+            <div class="session-start">
+                <span>Started at</span>
+                <strong><?= e(date('d M Y, h:i:s A', $_SESSION['start_time'])) ?></strong>
+            </div>
+        <?php endif; ?>
     </div>
